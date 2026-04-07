@@ -1,0 +1,251 @@
+/* ── Overlay ──────────────────────────────────────────────────────────────── */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(0, 15, 50, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%; max-width: 640px;
+  max-height: 92vh;
+  display: flex; flex-direction: column;
+  box-shadow: 0 32px 64px rgba(0,0,0,0.25);
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 18px;
+  background: #001F5B; color: #fff;
+}
+.headerLeft {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.85rem; font-weight: 600;
+}
+.closeX {
+  width: 28px; height: 28px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: #fff; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.12s;
+}
+.closeX:hover { background: rgba(255,255,255,0.18); }
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+.body { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+
+.recArea {
+  padding: 28px 24px 20px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  border-bottom: 1px solid #EEF2F8;
+}
+
+/* ── Mic Button ───────────────────────────────────────────────────────────── */
+.micBtn {
+  position: relative;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  border: 2px solid #E2E8F0;
+  background: #F8FAFF; color: #64748B;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.micBtn:hover { border-color: #6D28D9; color: #6D28D9; background: #F3F0FF; }
+.micActive {
+  background: #6D28D9 !important;
+  border-color: #6D28D9 !important;
+  color: #fff !important;
+  animation: micPulse 1.5s ease-out infinite;
+}
+.micRing {
+  position: absolute; inset: -6px;
+  border-radius: 50%;
+  border: 2px solid rgba(109,40,217,0.3);
+  animation: ringExpand 1.5s ease-out infinite;
+}
+@keyframes micPulse {
+  0%   { box-shadow: 0 0 0 0   rgba(109,40,217,0.4); }
+  70%  { box-shadow: 0 0 0 16px rgba(109,40,217,0); }
+  100% { box-shadow: 0 0 0 0   rgba(109,40,217,0); }
+}
+@keyframes ringExpand {
+  0%   { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* ── Status ───────────────────────────────────────────────────────────────── */
+.recStatus {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.8rem; color: #475569; font-weight: 500;
+}
+.recDot {
+  width: 7px; height: 7px;
+  background: #DC2626; border-radius: 50%;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── Transcript Box ───────────────────────────────────────────────────────── */
+.transcriptBox {
+  width: 100%;
+  min-height: 120px; max-height: 200px;
+  overflow-y: auto;
+  background: #F8FAFF;
+  border: 1px solid #E2E8F0; border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 0.85rem; line-height: 1.65;
+}
+.finalText   { color: #0D1B3E; }
+.interimText { color: #94A3B8; font-style: italic; }
+.placeholder { color: #CBD5E1; font-style: italic; }
+
+/* ── Banners ──────────────────────────────────────────────────────────────── */
+.errorBanner {
+  width: 100%;
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px;
+  background: #FEE2E2; color: #B91C1C;
+  border-radius: 8px; font-size: 0.8rem;
+  border: 1px solid #FECACA;
+}
+
+.savedBanner {
+  width: 100%;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 12px 14px;
+  background: #F0FDF4;
+  border: 1px solid #BBF7D0; border-radius: 8px;
+}
+.savedTop {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.savedTop strong { font-size: 0.82rem; color: #15803D; }
+.savedZone {
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 4px;
+}
+.stressFlag {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.68rem; font-weight: 600;
+  color: #B91C1C; background: #FEE2E2;
+  padding: 2px 7px; border-radius: 4px;
+}
+.rowBadge {
+  font-size: 0.65rem; color: #64748B;
+  background: #EEF2F8; padding: 2px 7px; border-radius: 4px;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── Biometrics Row ───────────────────────────────────────────────────────── */
+.bioRow {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.bioChip {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.72rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+}
+
+.savedKeywords {
+  font-size: 0.72rem; color: #64748B;
+}
+
+/* ── Actions ──────────────────────────────────────────────────────────────── */
+.actions {
+  display: flex; gap: 10px; width: 100%; justify-content: center;
+}
+.saveBtn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 22px;
+  background: #001F5B; color: #fff;
+  border: none; border-radius: 7px;
+  font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: background 0.12s;
+}
+.saveBtn:hover:not(:disabled) { background: #1A3F8F; }
+.saveBtn:disabled { opacity: 0.5; cursor: not-allowed; }
+.discardBtn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 18px;
+  background: #fff; color: #64748B;
+  border: 1px solid #E2E8F0; border-radius: 7px;
+  font-size: 0.82rem; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all 0.12s;
+}
+.discardBtn:hover { border-color: #DC2626; color: #DC2626; }
+
+/* ── History ──────────────────────────────────────────────────────────────── */
+.history { padding: 16px 24px; }
+.historyHead {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 0.75rem; font-weight: 600; color: #334155;
+  margin-bottom: 12px; padding-bottom: 10px;
+  border-bottom: 1px solid #EEF2F8;
+}
+.historyRow { padding: 12px 0; border-bottom: 1px solid #F1F5F9; }
+.historyMeta {
+  display: flex; align-items: center; gap: 7px;
+  margin-bottom: 6px; flex-wrap: wrap;
+}
+.historyTime {
+  font-size: 0.68rem; color: #94A3B8;
+  font-family: 'DM Mono', monospace;
+}
+.historyZone {
+  font-size: 0.65rem; font-weight: 600;
+  padding: 1px 7px; border-radius: 4px;
+}
+.historyStress {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.65rem; font-weight: 600;
+  color: #B91C1C; background: #FEE2E2;
+  padding: 1px 6px; border-radius: 4px;
+}
+.historyBio {
+  font-size: 0.65rem; color: #64748B;
+  font-family: 'DM Mono', monospace;
+  background: #F8FAFF; padding: 1px 6px; border-radius: 4px;
+}
+.historyDur {
+  margin-left: auto;
+  font-size: 0.68rem; color: #94A3B8;
+  font-family: 'DM Mono', monospace;
+}
+.historyText { font-size: 0.79rem; color: #334155; line-height: 1.5; }
+.historyKw   { font-size: 0.68rem; color: #94A3B8; margin-top: 4px; }
+
+/* ── Unsupported ──────────────────────────────────────────────────────────── */
+.unsupported {
+  padding: 40px 32px; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.unsupported h3 { font-size: 1rem; color: #0D1B3E; margin: 0; }
+.unsupported p  { font-size: 0.82rem; color: #64748B; margin: 0; }
+.closeBtn {
+  padding: 8px 20px; border-radius: 7px;
+  background: #001F5B; color: #fff;
+  border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 0.82rem;
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────────── */
+.footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 18px;
+  background: #F8FAFF; border-top: 1px solid #EEF2F8;
+  font-size: 0.67rem; color: #94A3B8;
+  flex-wrap: wrap; gap: 4px;
+}
+.footer code { color: #475569; background: #EEF2F8; padding: 1px 5px; border-radius: 3px; }

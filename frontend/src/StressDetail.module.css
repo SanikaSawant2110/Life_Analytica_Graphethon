@@ -1,0 +1,245 @@
+/* ── Page ─────────────────────────────────────────────────────────────────── */
+.page {
+  min-height: 100vh;
+  background: #F5F7FC;
+  font-family: 'DM Sans', sans-serif;
+  color: #0D1B3E;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────────── */
+.header {
+  background: #fff;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 14px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.backBtn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.77rem; color: #64748B;
+  background: none; border: none;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  padding: 0; width: fit-content;
+  transition: color 0.12s;
+}
+.backBtn:hover { color: #001F5B; }
+
+.headerTitle {
+  display: flex; align-items: center; gap: 12px;
+}
+.h1 {
+  font-size: 1.25rem; font-weight: 800;
+  color: #0D1B3E; margin: 0;
+  letter-spacing: -0.4px;
+}
+.subtitle {
+  font-size: 0.77rem; color: #64748B; margin: 3px 0 0;
+}
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+.body { padding: 20px 24px; }
+
+/* ── KPI Row ──────────────────────────────────────────────────────────────── */
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin-bottom: 20px;
+}
+@media (max-width: 900px) { .kpiRow { grid-template-columns: repeat(3, 1fr); } }
+
+.kpi {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-top: 2px solid;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.kpiIcon {
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 6px;
+}
+.kpiVal { font-size: 1.5rem; font-weight: 800; line-height: 1; letter-spacing: -0.5px; }
+.kpiU   { font-size: 0.76rem; font-weight: 400; opacity: 0.7; }
+.kpiLabel { font-size: 0.68rem; color: #64748B; }
+
+/* ── Grid ─────────────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+@media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+
+.leftCol  { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 80px; }
+.rightCol { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.cardHead {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; font-weight: 600; color: #0D1B3E;
+  margin-bottom: 14px; padding-bottom: 10px;
+  border-bottom: 1px solid #EEF2F8;
+}
+.cardBadge {
+  margin-left: auto;
+  font-size: 0.65rem; color: #64748B;
+  background: #EEF2F8; padding: 2px 8px;
+  border-radius: 10px;
+}
+.chartNote {
+  font-size: 0.68rem; color: #94A3B8;
+  text-align: center; margin-top: 8px;
+}
+
+/* ── Clinical Interpretation ──────────────────────────────────────────────── */
+.interpretation { display: flex; flex-direction: column; gap: 14px; }
+.interpItem { display: flex; gap: 12px; }
+.interpIcon {
+  width: 32px; height: 32px;
+  border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.interpTitle { font-size: 0.8rem; font-weight: 700; color: #0D1B3E; margin-bottom: 4px; }
+.interpDesc  { font-size: 0.75rem; color: #475569; line-height: 1.55; }
+
+/* ── Transcripts ──────────────────────────────────────────────────────────── */
+.transcriptList { display: flex; flex-direction: column; gap: 10px; }
+
+.transcriptScrollable {
+  max-height: calc(100vh - 220px);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+.transcriptScrollable::-webkit-scrollbar { width: 5px; }
+.transcriptScrollable::-webkit-scrollbar-track { background: #F1F5F9; border-radius: 10px; }
+.transcriptScrollable::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 10px; }
+.transcriptScrollable::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+.transcriptCard {
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  background: #FFFBFB;
+  border-left: 3px solid #DC2626;
+  cursor: pointer;
+  transition: box-shadow 0.12s;
+}
+.transcriptCard:hover { box-shadow: 0 2px 10px rgba(0,31,91,0.08); }
+.transcriptSelected {
+  background: #FFF5F5 !important;
+  border-color: #FCA5A5 !important;
+  border-left-color: #DC2626 !important;
+}
+
+.tcMeta {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px; flex-wrap: wrap;
+}
+.tcTime {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; color: #94A3B8;
+  font-family: 'DM Mono', monospace;
+}
+.tcDur {
+  font-size: 0.65rem; color: #94A3B8;
+  font-family: 'DM Mono', monospace;
+}
+.tcStress {
+  display: flex; align-items: center; gap: 3px;
+  font-size: 0.65rem; font-weight: 600;
+  color: #B91C1C; background: #FEE2E2;
+  padding: 2px 7px; border-radius: 4px;
+}
+.tcText {
+  font-size: 0.8rem; color: #334155; line-height: 1.55;
+  margin-bottom: 6px;
+}
+.tcKeywords {
+  font-size: 0.68rem; color: #94A3B8;
+  margin-bottom: 6px;
+}
+.tcExpand {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; color: #1A6BCC; font-weight: 500;
+}
+
+/* ── Empty State ──────────────────────────────────────────────────────────── */
+.emptyTranscripts {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; padding: 32px 16px; text-align: center;
+}
+.emptyTranscripts p { font-size: 0.82rem; color: #64748B; margin: 0; }
+.emptyHint { font-size: 0.75rem; color: #94A3B8 !important; max-width: 340px; }
+
+.stressKwList { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 380px; }
+.stressKwTitle { width: 100%; font-size: 0.7rem; color: #94A3B8; font-weight: 600; }
+.stressKw {
+  font-size: 0.68rem; color: #B91C1C;
+  background: #FEE2E2; padding: 2px 8px;
+  border-radius: 4px; font-weight: 500;
+}
+
+/* ── Action Points ────────────────────────────────────────────────────────── */
+.actionPoints { display: flex; flex-direction: column; gap: 10px; }
+.actionPoint {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 12px;
+  background: #F8FAFF;
+  border-radius: 7px;
+  border: 1px solid #EEF2F8;
+}
+.actionN {
+  width: 22px; height: 22px; flex-shrink: 0;
+  background: #001F5B; color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; font-weight: 700;
+}
+.actionText { font-size: 0.78rem; color: #334155; line-height: 1.5; padding-top: 2px; }
+
+/* ── Loading ──────────────────────────────────────────────────────────────── */
+.loading {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 14px;
+  font-size: 0.82rem; color: #64748B;
+}
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid #E2E8F0;
+  border-top-color: #1A6BCC;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Voice Transcript Biometric Row ──────────────────────────────────────── */
+.tcBioRow {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 6px; flex-wrap: wrap;
+}
+.tcBio {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 2px 8px; border-radius: 5px;
+  font-family: 'DM Mono', monospace;
+}
+.tcBioNote {
+  font-size: 0.62rem; color: #94A3B8; font-style: italic;
+}
